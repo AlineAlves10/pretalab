@@ -14,7 +14,7 @@ const medalhas = [];
 const rankeando = []; 
 
 while (true) {
-    let pais = prompt('Digite o nome de um pais ou sair para terminar:');
+    let pais = prompt('Digite o nome de um país ou sair para terminar:');
 
     if (pais.toLocaleLowerCase() == 'sair') {
         break;
@@ -33,6 +33,9 @@ for (let i = 0; i < paises.length; i++) {
     rankeando.push({ pais: paises[i], totalMedalhas: medalhas[i] });
 }
 
+let resultado = "Ranking de medalhas:\n";
+for (let i = 0; i < rankeando.length; i++) {
+    resultado += `${rankeando[i].pais}: ${rankeando[i].totalMedalhas} medalhas\n`;
+}
 
-
-alert()
+alert(resultado);
