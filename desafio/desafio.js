@@ -19,19 +19,26 @@ while (true) {
     if (pais.toLocaleLowerCase() == 'sair') {
         break;
     }
-    paises.push(pais);
 
     let medalhas_ouro = Number(prompt(`Quantas medalhas de Ouro o ${pais} tem:`));
     let medalhas_prata = Number(prompt(`Quantas medalhas de Prata o ${pais} tem:`));
     let medalhas_bronze = Number(prompt(`Quantas medalhas de Bronze o ${pais} tem:`));
+    
+    if (!isNaN(medalhas_ouro) && !isNaN(medalhas_prata) && !isNaN(medalhas_bronze)) {
+        let calculo = medalhas_ouro + medalhas_prata + medalhas_bronze;
+        medalhas.push(calculo);
+        paises.push(pais);
+    } else {
+        alert("Insira apenas números válidos para as medalhas.");
+    }
 
-    let calculo = medalhas_ouro + medalhas_prata + medalhas_bronze;
-    medalhas.push(calculo);
 }
+
 
 for (let i = 0; i < paises.length; i++) {
     rankeando.push({ pais: paises[i], totalMedalhas: medalhas[i] });
 }
+rankeando.sort((a, b) => b.totalMedalhas - a.totalMedalhas);
 
 let resultado = "Ranking de medalhas:\n";
 for (let i = 0; i < rankeando.length; i++) {
